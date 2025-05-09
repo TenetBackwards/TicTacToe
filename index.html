@@ -3,78 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TicTacToe</title>
+    <title>TicTacToe Menu</title>
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
-
-
-
 <body>
+
+    <!-- Main Menu -->
     <h1>Welcome to TicTacToe!</h1>
 
-    <div>
-        <p id="userCont">You : <span id="user"></span> </p>
-        <p id="oppNameCont">Opponent : <span id="oppName"></span> </p>
-    
+    <div id="menu">
+        <p>Choose a game mode:</p>
+        <!-- Links to respective game mode pages -->
+        <button class="modeBtn" id="classicMode">Classic Mode</button>
+        <button class="modeBtn" id="blitzMode">Blitz Mode</button>
+        <button class="modeBtn" id="powerUpMode">Power-Up Mode</button>
     </div>
-<br>
-<p id="valueCont">You are playing as <span id="value"></span> </p>
-<br>
-<p id="whosTurn">X's Turn</p>
 
-<div>
-    <p id="enterName">Enter your Name : </p>
-    <input type ="text" placeholder="Name" id="name" autocomplete="off">
-</div>
+    <!-- Game Mode Selection Handling -->
+    <script>
+        // Links for different game modes
+        document.getElementById('classicMode').addEventListener('click', function() {
+            window.location.href = 'basictictactoe.html'; // Redirects to Basic TicTacToe
+        });
 
-<button id="find">Search for a player</button>
-<img id="loading" src="loadingSnail.gif" alt="loading">
+        document.getElementById('blitzMode').addEventListener('click', function() {
+            window.location.href = 'blitztictactoe.html'; // Redirects to Blitz TicTacToe (you can create this page similarly)
+        });
 
-<div id="bigContainer">
-<div id="cont">
-    <button id="btn1" class="btn"></button>
-    <button id="btn2" class="btn"></button>
-    <button id="btn3" class="btn"></button>
-    <button id="btn4" class="btn"></button>
-    <button id="btn5" class="btn"></button>
-    <button id="btn6" class="btn"></button>
-    <button id="btn7" class="btn"></button>
-    <button id="btn8" class="btn"></button>
-    <button id="btn9" class="btn"></button>
-</div>
-</div>
+        document.getElementById('powerUpMode').addEventListener('click', function() {
+            window.location.href = 'poweruptictactoe.html'; // Redirects to Power-Up TicTacToe (you can create this page similarly)
+        });
+    </script>
 
 </body>
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  document.getElementById("loading").style.display = "none"
-    document.getElementById("bigContainer").style.display = "none"
-    document.getElementById("userCont").style.display = "none"
-    document.getElementById("oppNameCont").style.display = "none"
-    document.getElementById("valueCont").style.display = "none"
-    document.getElementById("whosTurn").style.display = "none"
-
-    const socket = io();
-
-    let name;
-
-    document.getElementById('find').addEventListener("click", function () {
-        name = document.getElementById("name").value
-        document.getElementById("user").innerText = name
-        if (name == null || name == '') {
-            alert("Please enter a name")
-        }
-        else {
-
-            socket.emit("find", { name: name })
-
-            document.getElementById("loading").style.display = "block"
-            document.getElementById("find").disabled = true;
-
-        }
-    })
-
-</script>
-<script src="index.js"></script>
 </html>
