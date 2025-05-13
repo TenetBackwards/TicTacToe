@@ -5,6 +5,21 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+
+socket.on("connect", () => {
+    console.log("Connected to the server!");
+});
+
+socket.on("connect_error", (err) => {
+    console.error("Connection failed:", err.message);
+});
+
+socket.on("find", (data) => {
+    console.log("Game data:", data);
+});
+
+
     let userName;
 
     // Get elements
