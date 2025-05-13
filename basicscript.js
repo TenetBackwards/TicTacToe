@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
     // const socket = io("/classic");
-    const socket = io("https://tictactoe-194a.onrender.com/basictictactoe.html", {
+    const socket = io("https://tictactoe-194a.onrender.com/classic", {
   transports: ["websocket"]
 });
 
