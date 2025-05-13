@@ -298,6 +298,12 @@
 
 
 
+const cors = require("cors");
+app.use(cors({
+  origin: "https://tictactoe8gr.netlify.app", // your Netlify frontend
+  methods: ["GET", "POST"],
+  credentials: true
+}));
 
 const express = require("express");
 const app = express();
@@ -306,7 +312,15 @@ const http = require("http");
 const { Server } = require("socket.io");
 
 const server = http.createServer(app);
-const io = new Server(server);
+// const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: "https://tictactoe8gr.netlify.app",
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+});
+
 
 // Serve static files (HTML, CSS, JS)
 app.use(express.static(path.resolve("")));

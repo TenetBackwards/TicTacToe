@@ -175,7 +175,10 @@
 
 
 window.addEventListener('DOMContentLoaded', () => {
-    const socket = io("/blitz");
+    // const socket = io("/blitz");
+    const socket = io("https://tictactoe-194a.onrender.com/blitz", {
+  transports: ["websocket"]
+});
 
     let userName;
 

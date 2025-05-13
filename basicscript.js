@@ -1,5 +1,9 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const socket = io("/classic");
+    // const socket = io("/classic");
+    const socket = io("https://tictactoe-194a.onrender.com/classic", {
+  transports: ["websocket"]
+});
+
 
     let userName;
 
